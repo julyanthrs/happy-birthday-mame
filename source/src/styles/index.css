@@ -494,11 +494,124 @@ html.reduce-motion .m-soft {
   background: #f8f1e6;
   box-shadow: 0 1.6vh 3.4vh rgba(10, 2, 6, 0.5), 0 0 0 1px rgba(120, 80, 60, 0.12);
 }
+.polaroid {
+  --dev: 1;
+  --cap: 1;
+  --shine: 0;
+  --burst: 0;
+  transform-origin: 50% 1.5%;
+}
+.polaroid .photo {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
 .polaroid img {
   display: block;
   width: 100%;
   height: auto;
   user-select: none;
+  /* A fresh polaroid "develops": dark, sepia and soft, then clears as it comes into focus. */
+  filter: sepia(calc((1 - var(--dev)) * 0.75)) brightness(calc(0.55 + 0.45 * var(--dev))) saturate(calc(0.3 + 0.7 * var(--dev)))
+    blur(calc((1 - var(--dev)) * 3.5px));
+}
+.polaroid.dev-done img {
+  filter: none;
+}
+/* A glint that sweeps across the print as it arrives. */
+.polaroid .shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(112deg, transparent 32%, rgba(255, 255, 255, 0.6) 48%, rgba(255, 236, 214, 0.25) 56%, transparent 68%);
+  transform: translateX(calc((var(--shine) - 0.5) * 240%));
+  opacity: calc(var(--shine) * (1 - var(--shine)) * 3.2);
+  mix-blend-mode: soft-light;
+}
+/* The handwritten caption writes itself, one letter at a time. */
+.polaroid .cap .w {
+  display: inline-block;
+  white-space: nowrap;
+}
+.polaroid .cap .ch {
+  --k: clamp(0, calc(var(--cap) * (var(--n) + 5) - var(--i)), 1);
+  display: inline-block;
+  opacity: var(--k);
+  transform: translateY(calc((1 - var(--k)) * 0.35em)) rotate(calc((1 - var(--k)) * -7deg));
+}
+/* Sparks and hearts burst outward as a photo lands. */
+.polaroid .sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.polaroid .sparks i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-style: normal;
+  line-height: 1;
+  font-size: calc(var(--sz) * 1cqw);
+  color: #ffe0a6;
+  text-shadow: 0 0 1.4cqw rgba(255, 206, 140, 0.95);
+  transform: translate(-50%, -50%) rotate(var(--a)) translateY(calc(var(--burst) * var(--d) * -1cqw)) rotate(calc(var(--burst) * 180deg))
+    scale(calc(0.3 + var(--burst) * 0.9));
+  opacity: calc(var(--burst) * (1 - var(--burst)) * 4);
+}
+/* A warm halo behind the photo in focus. */
+.mem-glow {
+  position: absolute;
+  inset: -16% -24%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 216, 172, 0.55), rgba(255, 170, 142, 0.22) 55%, transparent 76%);
+  opacity: var(--glow, 0);
+  filter: blur(10px);
+  pointer-events: none;
+}
+/* Drifting bokeh, hearts and sparks, a room tint that follows the photo, and a soft shutter flash. */
+.memory-atmos {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mem-tint {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 72% 62% at 50% 45%, var(--tint, rgba(255, 168, 150, 0.3)), transparent 72%);
+  mix-blend-mode: screen;
+}
+.mote {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  font-style: normal;
+  line-height: 1;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.mote.bokeh {
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 228, 192, 0.85) 0, rgba(255, 202, 164, 0.34) 46%, transparent 70%);
+  filter: blur(1.5px);
+}
+.mote.heart,
+.mote.spark {
+  color: #ffd9b8;
+  text-shadow: 0 0 12px rgba(255, 190, 150, 0.9);
+}
+.mem-flash {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 45%, rgba(255, 247, 235, 0.95), rgba(255, 226, 200, 0.4) 40%, transparent 72%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+html.reduce-motion .polaroid .sparks,
+html.reduce-motion .mem-flash,
+html.reduce-motion .mote {
+  display: none;
 }
 .polaroid figcaption {
   padding: 4cqw 2cqw 6cqw;

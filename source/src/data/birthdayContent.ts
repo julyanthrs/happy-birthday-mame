@@ -35,7 +35,7 @@ export interface LoveItem {
 const memories: Memory[] = [
   {
     image: '/assets/memories/memory-01.jpg',
-    caption: 'Before all of us.',
+    caption: 'Kathniel',
     date: 'Throwback',
     alt: 'A younger Mame smiling next to a man in a cap, in front of a bamboo wall',
   },
@@ -47,14 +47,14 @@ const memories: Memory[] = [
   },
   {
     image: '/assets/memories/memory-03.jpg',
-    caption: 'Our little family.',
+    caption: 'Where everything started',
     date: 'February 2010',
     alt: 'Mame and a man in a green cap holding a toddler on a porch',
   },
   {
     image: '/assets/memories/memory-04.jpg',
-    caption: 'Dressed up just to sit next to you.',
-    date: 'Growing up',
+    caption: 'Me with Liza Soberano',
+    date: 'Sexy noon, mas sexy ngayon',
     alt: 'Mame and a little girl in a purple dress sitting together on the grass',
   },
   {
@@ -77,14 +77,14 @@ const memories: Memory[] = [
   },
   {
     image: '/assets/memories/memory-09.jpg',
-    caption: 'Best company, honestly.',
+    caption: 'You and Mateo',
     date: 'Christmas',
     alt: 'Mame smiling next to a fluffy dog in a Christmas-decorated room',
   },
   {
     image: '/assets/memories/memory-10.jpg',
-    caption: 'All dressed up, all together.',
-    date: 'A special night',
+    caption: 'Thank you for the best 18th Birthday ever',
+    date: '18th Birthday',
     alt: 'The family of four seated together in front of a pink and lilac flower and balloon backdrop',
   },
   {
@@ -101,13 +101,13 @@ const memories: Memory[] = [
   },
   {
     image: '/assets/memories/memory-13.jpg',
-    caption: 'Caught us laughing.',
+    caption: 'Kunyare natawa',
     date: 'Beach day',
     alt: 'The family laughing with their hands over their mouths on the beach',
   },
   {
     image: '/assets/memories/memory-14.jpg',
-    caption: 'Still holding hands.',
+    caption: 'Super sweet, super cute I lovvet',
     date: 'Beach day',
     alt: 'Mame holding hands with a man on the beach beside a leaning palm tree',
   },
@@ -119,7 +119,7 @@ const memories: Memory[] = [
   },
   {
     image: '/assets/memories/memory-16.jpg',
-    caption: 'Fearless, even next to the horse.',
+    caption: 'Kabayo...?',
     date: 'London',
     alt: 'Mame standing in front of a Horse Guard on horseback',
   },
@@ -131,14 +131,14 @@ const memories: Memory[] = [
   },
   {
     image: '/assets/memories/memory-18.jpg',
-    caption: 'Golden hour looks good on you.',
+    caption: 'Sobrang European',
     date: 'Windsor',
     alt: 'Mame sitting on a bench with a castle tower and shops behind her',
   },
   {
     image: '/assets/memories/memory-19.jpg',
-    caption: 'Coffee, croissants, and that smile.',
-    date: 'A slow morning',
+    caption: 'Madam Mamalou in London',
+    date: 'Croissant vs Tambakol',
     alt: 'Mame at a cafe table with a croissant, orange juice and coffee',
   },
 ];
